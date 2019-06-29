@@ -1,0 +1,114 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": "airbnb",
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "react-hooks",
+    "redux-saga"
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": [
+          "src"
+        ]
+      },
+      "webpack": {
+        "config": "config/webpack.prod.js"
+      }
+    }
+  },
+  "rules": {
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "comma-dangle": [
+      "error",
+      "always-multiline",
+      {
+        "functions": "never"
+      }
+    ],
+    "func-names": [
+      "error",
+      "as-needed",
+      {
+        "generators": "never"
+      }
+    ],
+    "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "import/prefer-default-export": 0,
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "ignorePattern": "d=\"[\\w\\W\\d\\s\\.]+\"",
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": [
+          "event",
+          "method",
+          "reassignItem"
+        ]
+      }
+    ],
+    "no-underscore-dangle": [
+      2,
+      {
+        "allow": [
+          "__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"
+        ]
+      }
+    ],
+    "no-useless-escape": 0,
+    "react/forbid-prop-types": 0,
+    "react/sort-prop-types": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "redux-saga/no-yield-in-race": "error",
+    "redux-saga/yield-effects": "error",
+    "react/require-default-props": 0,
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/webpack.*.js"
+        ]
+      }
+    ],
+    "import/no-unresolved": [
+      2,
+      {
+        "commonjs": true
+      }
+    ]
+  }
+}
