@@ -19,7 +19,6 @@ export function* getWeatherSaga({ payload }) {
     const query = { format: 'json', u: 'c', ...payload };
     const data = yield call(onServerGet, weatherUrl, query);
 
-    console.log(data);
     yield put(setWeather(data));
 
     yield put(isRunning());
