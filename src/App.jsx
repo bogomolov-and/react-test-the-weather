@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
-import { hot } from 'react-hot-loader/root';
+import { hot } from 'react-hot-loader';
 import { createBrowserHistory } from 'history';
 
 // routes
@@ -27,4 +27,4 @@ const App = () => {
 
 App.displayName = 'App';
 
-export default hot(App);
+export default hot(module)(App);

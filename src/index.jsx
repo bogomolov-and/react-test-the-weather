@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
@@ -7,14 +7,15 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 
 import { store, persistor } from 'store';
 
-import App from 'App';
+require('react-hot-loader/patch');
 
+import App from 'App';
 
 const renderRoot = Component => {
   const root = document.getElementById('root');
 
   if (root) {
-    ReactDOM.render(
+    render(
       <AppContainer>
         <Provider store={store}>
           <PersistGate

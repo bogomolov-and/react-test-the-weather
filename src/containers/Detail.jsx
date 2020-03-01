@@ -1,7 +1,6 @@
 import React from 'react';
 import { object } from 'prop-types';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router';
 
 // components
@@ -11,7 +10,8 @@ import WeatherItem from 'components/WeatherItem';
 // helpers
 import { getProp } from 'helpers';
 
-const Detail = ({ weather, match }) => {
+const Detail = ({ match }) => {
+  const weather = useSelector(state => state.weather);
   const dataId = +match.params.id;
   const { forecasts = [] } = weather;
   const data = forecasts.find(item => item.date === dataId) || {};
@@ -33,11 +33,4 @@ Detail.propTypes = {
   weather: object,
 };
 
-const mapStateToProps = state => ({
-  weather: state.weather,
-});
-
-export default compose(
-  withRouter,
-  connect(mapStateToProps)
-)(Detail);
+export default withRouter(Detail);
