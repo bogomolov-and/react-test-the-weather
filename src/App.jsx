@@ -6,6 +6,7 @@ import { createBrowserHistory } from 'history';
 // routes
 import List from 'containers/List';
 import Detail from 'containers/Detail';
+import NotFound from 'containers/NotFound';
 
 import useGlobalStyles from 'styles';
 
@@ -17,9 +18,9 @@ const App = () => {
   return (
     <Router history={history}>
       <Switch>
-        <Route path="/" exact component={List} />
-        <Route path="/:id" component={Detail} />
-        <Route render={() => <div>404</div>} />
+        <Route path="/" exact><List /></Route>
+        <Route path="/404"><NotFound /></Route>
+        <Route path="/:id"><Detail /></Route>
       </Switch>
     </Router>
   );

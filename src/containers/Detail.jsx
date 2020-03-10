@@ -1,7 +1,6 @@
 import React from 'react';
-import { object } from 'prop-types';
 import { useSelector } from 'react-redux';
-import { withRouter } from 'react-router';
+import { useParams, Redirect } from 'react-router-dom';
 
 // components
 import H2 from 'components/H2';
@@ -10,13 +9,18 @@ import WeatherItem from 'components/WeatherItem';
 // helpers
 import { getProp } from 'helpers';
 
-const Detail = ({ match }) => {
+const Detail = () => {
+  const params = useParams();
   const weather = useSelector(state => state.weather);
-  const dataId = +match.params.id;
+  const dataId = +params.id;
   const { forecasts = [] } = weather;
   const data = forecasts.find(item => item.date === dataId) || {};
   const locationCity = getProp(weather, ['location', 'city'], '');
   const locationCountry = getProp(weather, ['location', 'country'], '');
+
+  if (JSON.stringify(data) === '{}') {
+    return (<Redirect to="404" />);
+  }
 
   return (
     <div className="container">
@@ -28,9 +32,4 @@ const Detail = ({ match }) => {
 
 Detail.displayName = 'Detail';
 
-Detail.propTypes = {
-  match: object,
-  weather: object,
-};
-
-export default withRouter(Detail);
+export default Detail;

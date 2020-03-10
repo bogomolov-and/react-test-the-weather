@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { object } from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { withRouter } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 // actions
 import { getWeather } from 'actions';
@@ -16,8 +15,9 @@ import { getProp } from 'helpers';
 // hooks
 import useStyles from 'styles/containers/List';
 
-const List = ({ history }) => {
+const List = () => {
   const classes = useStyles();
+  const history = useHistory();
   const dispatch = useDispatch();
   const weather = useSelector(state => state.weather);
   const locationCity = getProp(weather, ['location', 'city'], '');
@@ -84,8 +84,4 @@ const List = ({ history }) => {
 
 List.displayName = 'List';
 
-List.propTypes = {
-  history: object,
-};
-
-export default withRouter(List);
+export default List;

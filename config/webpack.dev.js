@@ -14,7 +14,13 @@ module.exports = merge.smart(webpackConfigBase, {
     'react-hot-loader/patch',
     paths.appIndexJs,
   ],
+  resolve: {
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    },
+  },
   devServer: {
+    hot: true,
     port: appPort,
     publicPath: '/',
     historyApiFallback: true,
